@@ -1,0 +1,294 @@
+/* --- General --- */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  color: #111;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+
+/* --- Sidebar estilo Casa Matriz --- */
+.sidebar {
+  width: 230px;
+  background-color: #c0c0c0; /* Plateado medio */
+  color: #000;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sidebar h2 {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #999;
+  padding-bottom: 10px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  padding: 10px 15px;
+  margin: 8px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  transition: background 0.3s;
+}
+
+.sidebar ul li i {
+  margin-right: 10px;
+}
+
+.sidebar ul li:hover {
+  background-color: #b0b0b0;
+}
+
+.sidebar ul li.active {
+  background-color: #a0a0a0;
+  color: white;
+  font-weight: bold;
+}
+
+/* --- Main Content --- */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #e0e0e0;
+}
+
+.content-section h1 {
+  margin-bottom: 15px;
+  font-size: 22px;
+  color: #111;
+}
+
+/* --- Barra de búsqueda y filtro --- */
+.top-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.search-bar {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #999;
+  font-size: 14px;
+}
+
+#filtroEstado {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #999;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+#filtroSucursal {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #999;
+  background-color: #fff;
+  font-size: 14px;
+}.btn-nuevo {
+  padding: 8px 16px;
+  background-color: #111;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.btn-nuevo:hover {
+  background-color: #333;
+}
+/* ======= Tablas ======= */
+.table-section {
+  margin-bottom: 30px;
+}
+
+.table-section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #111;
+  text-align: left; /* alinear uniformemente */
+}
+
+.table-section table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff; /* blanco */
+  border: 1px solid #c0c0c0; /* plateado */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table-section th,
+.table-section td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid #c0c0c0; /* plateado */
+  font-size: 0.95rem;
+}
+
+.table-section th {
+  background-color: #f0f0f0; /* plateado claro */
+  color: #111;
+}
+
+.table-section tr:last-child td {
+  border-bottom: none;
+}
+
+.table-section tr:hover {
+  background-color: #f5f5f5;
+}
+
+
+/* --- Modal --- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px 25px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #111;
+}
+
+/* --- Botón cerrar del modal con color de botones --- */
+.cerrar {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #111; /* color original de botones */
+  background-color: #111; 
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  line-height: 1;
+}
+
+.cerrar:hover {
+  background-color: #333;
+}
+
+/* --- Formulario del modal --- */
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-content input,
+.modal-content select {
+  padding: 8px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-guardar {
+  padding: 8px 16px;
+  background-color: #111;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-guardar:hover {
+  background-color: #333;
+}
+
+.btn-cancelar {
+  padding: 8px 16px;
+  background-color: #999;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#paginacion {
+  display: flex;
+  justify-content: center; /* centra horizontalmente */
+  align-items: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+#paginacion button {
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#paginacion button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+
+.btn-cancelar:hover {
+  background-color: #777;
+}
+
+/* --- Responsivo --- */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+  .top-bar {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

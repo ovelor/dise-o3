@@ -1,0 +1,47 @@
+.filtros-solicitudes {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.filtros-solicitudes label {
+  font-size: 0.95rem;
+  color: #111;
+}
+
+.filtros-solicitudes select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #e0e0e0;
+  color: #111;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border 0.2s;
+}
+
+.filtros-solicitudes select:focus {
+  outline: none;
+  border-color: #111;
+}
+
+
+/* Botones acciones */
+.btn-aceptar,
+.btn-denegar {
+  padding: 5px 8px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  margin: 0 2px;
+}
+
+.btn-aceptar {
+  background-color: #4CAF50;
+}
+
+.btn-denegar {
+  background-color: #f44336;
+}

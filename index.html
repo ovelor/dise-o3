@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Sucursales</title>
+  <link rel="stylesheet" href="css/Inicio.css" />
+</head>
+<body>
+<header class="header">
+  <div class="logo-container">
+    <img src="css/56.png" alt="Logo" class="logo-img">
+  </div>
+</header>
+
+  <main class="main-container">
+    <h1>🏢 Sistema de Gestión de Sucursales</h1>
+    <p>Seleccione una sucursal o la casa matriz para continuar</p>
+
+    <div class="card-container">
+      <div class="card" onclick="irSucursal('matriz')">
+        <h2>🏠 Casa Matriz</h2>
+        <p>Oficinas centrales</p>
+      </div>
+      <div class="card" onclick="irSucursal('managua')">
+        <h2>📍 Sucursal Managua</h2>
+        <p>Zona metropolitana</p>
+      </div>
+      <div class="card" onclick="irSucursal('carazo')">
+        <h2>📍 Sucursal Carazo</h2>
+        <p>Departamento de Carazo</p>
+      </div>
+      <div class="card" onclick="irSucursal('granada')">
+        <h2>📍 Sucursal Granada</h2>
+        <p>Departamento de Granada</p>
+      </div>
+      <div class="card" onclick="irSucursal('rivas')">
+        <h2>📍 Sucursal Rivas</h2>
+        <p>Departamento de Rivas</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Sistema de Sucursales</p>
+  </footer>
+
+ <script>
+  function irSucursal(nombre) {
+    // Guardar el nombre de la sucursal para usarlo después si quieres
+    localStorage.setItem("sucursalSeleccionada", nombre);
+
+    // Ir directamente a la página de login
+    window.location.href = "login.html";
+  }
+</script>
+
+
+</body>
+</html>

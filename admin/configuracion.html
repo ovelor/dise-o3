@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configuración - Casa Matriz</title>
+  <link rel="stylesheet" href="../css/AdminPanel.css">
+  <link rel="stylesheet" href="../css/configuracion.css">
+</head>
+<body>
+  <div class="container">
+    <!-- PANEL LATERAL -->
+    <aside class="sidebar">
+      <h2>CASA MATRIZ</h2>
+      <ul>
+        <li data-section="inicio"><i>🏠</i> Inicio</li>
+        <li data-section="ventas"><i>💰</i> Ventas</li>
+        <li data-section="sucursales"><i>🏢</i> Sucursales</li>
+        <li data-section="reportes"><i>📊</i> Reportes</li>
+        <li data-section="inventario"><i>📦</i> Inventario</li>
+        <li data-section="usuarios"><i>👥</i> Usuarios</li>
+        <li data-section="clientes"><i>🧑‍🤝‍🧑</i> Clientes</li>
+        <li class="active" data-section="configuracion"><i>⚙️</i> Configuración</li>
+        <li class="logout"><i>🚪</i> Cerrar sesión</li>
+      </ul>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+      <section id="configuracion" class="content-section active">
+        <header>
+          <h1>Configuración del Sistema</h1>
+          <p>Personaliza los ajustes de la Casa Matriz.</p>
+        </header>
+
+        <!-- Tarjetas de configuración -->
+        <div class="config-cards">
+          <!-- Ajustes Generales -->
+          <div class="card-config">
+            <div class="card-header">
+              <i>🛠️</i>
+              <h2>Ajustes Generales</h2>
+              <button class="btn-editar" data-modal="modalGeneral">Editar</button>
+            </div>
+            <p>Idioma, tema y preferencias visuales.</p>
+          </div>
+
+          <!-- Seguridad -->
+          <div class="card-config">
+            <div class="card-header">
+              <i>🔒</i>
+              <h2>Seguridad</h2>
+              <button class="btn-editar" data-modal="modalSeguridad">Editar</button>
+            </div>
+            <p>Cambiar contraseña y administrar accesos.</p>
+          </div>
+
+          <!-- Notificaciones -->
+          <div class="card-config">
+            <div class="card-header">
+              <i>🔔</i>
+              <h2>Notificaciones</h2>
+              <button class="btn-editar" data-modal="modalNotificaciones">Editar</button>
+            </div>
+            <p>Activar o desactivar alertas del sistema.</p>
+          </div>
+
+          <!-- Sesión -->
+          <div class="card-config">
+            <div class="card-header">
+              <i>👤</i>
+              <h2>Sesión</h2>
+              <button class="btn-editar" data-modal="modalSesion">Editar</button>
+            </div>
+            <p>Gestiona el estado de la sesión y cierre automático.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- MODALES -->
+  <!-- General -->
+  <div id="modalGeneral" class="modal">
+    <div class="modal-content">
+      <span class="cerrar">&times;</span>
+      <h2>Ajustes Generales</h2>
+      <form>
+        <label>Idioma</label>
+        <select>
+          <option>Español</option>
+          <option>Inglés</option>
+        </select>
+
+        <label>Tema</label>
+        <select>
+          <option>Claro</option>
+          <option>Oscuro</option>
+        </select>
+
+        <div class="form-buttons">
+          <button type="submit" class="btn-guardar">Guardar</button>
+          <button type="button" class="btn-cancelar">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Seguridad -->
+  <div id="modalSeguridad" class="modal">
+    <div class="modal-content">
+      <span class="cerrar">&times;</span>
+      <h2>Seguridad</h2>
+      <form>
+        <label>Contraseña Actual</label>
+        <input type="password" placeholder="Ingrese contraseña actual">
+
+        <label>Nueva Contraseña</label>
+        <input type="password" placeholder="Ingrese nueva contraseña">
+
+        <div class="form-buttons">
+          <button type="submit" class="btn-guardar">Guardar</button>
+          <button type="button" class="btn-cancelar">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Notificaciones -->
+  <div id="modalNotificaciones" class="modal">
+    <div class="modal-content">
+      <span class="cerrar">&times;</span>
+      <h2>Notificaciones</h2>
+      <form>
+        <label><input type="checkbox" checked> Alertas de nuevos usuarios</label>
+        <label><input type="checkbox" checked> Solicitudes pendientes</label>
+        <label><input type="checkbox"> Actualizaciones</label>
+
+        <div class="form-buttons">
+          <button type="submit" class="btn-guardar">Guardar</button>
+          <button type="button" class="btn-cancelar">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sesión -->
+  <div id="modalSesion" class="modal">
+    <div class="modal-content">
+      <span class="cerrar">&times;</span>
+      <h2>Sesión</h2>
+      <form>
+        <label>Tiempo de cierre automático</label>
+        <input type="number" placeholder="Minutos">
+
+        <div class="form-buttons">
+          <button type="submit" class="btn-guardar">Guardar</button>
+          <button type="button" class="btn-cancelar">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JS externo -->
+  <script src="../js/configuracion.js"></script>
+</body>
+</html>

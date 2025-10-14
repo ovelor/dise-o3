@@ -1,0 +1,62 @@
+/* ======= Fondo de la página ======= */
+body {
+  background-color: #e0e0e0; /* plateado claro */
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* ======= Contenedor del login ======= */
+.login-container {
+  max-width: 400px;
+  margin: 200px auto;
+  background-color: #fff;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* ======= Logo ======= */
+.login-logo {
+  margin-bottom: 20px;
+}
+
+.logo-img-login {
+  width: 150px;
+  height: auto;
+}
+
+/* ======= Inputs ======= */
+.login-container input {
+  width: 90%;
+  padding: 12px 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* ======= Botón ======= */
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #111; /* negro */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+  background-color: #555;
+}
+
+/* ======= Texto inferior ======= */
+.login-container p.info {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #111; /* negro */
+}

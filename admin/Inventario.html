@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventario - Casa Matriz</title>
+  <link rel="stylesheet" href="../css/inventario.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Panel lateral -->
+    <aside class="sidebar">
+      <h2>CASA MATRIZ</h2>
+      <ul>
+        <li data-section="admin"><i>🏠</i> Inicio</li>
+        
+       
+        <li data-section="reportes"><i>📊</i> Reportes</li>
+        <li class="active" data-section="inventario"><i>📦</i> Inventario</li>
+        <li data-section="usuarios"><i>👥</i> Usuarios</li>
+        <li class="logout" onclick="cerrarSesion()"><i>🚪</i> Cerrar sesión</li>
+
+      </ul>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+      <section id="inventario" class="content-section active">
+        <header>
+          <h1>Inventario Productos</h1>
+          <div class="top-bar">
+            <input type="text" placeholder="🔍 Buscar producto..." class="search-bar">
+            
+            <!-- Filtro por estado -->
+            <select id="filtroEstado">
+              <option value="todos">Todos</option>
+              <option value="disponible">Disponible</option>
+              <option value="agotado">Agotado</option>
+            </select>
+
+            <!-- Filtro por sucursal -->
+            <select id="filtroSucursal">
+              <option value="todos">Todas las sucursales</option>
+              <option value="carazo">Carazo</option>
+              <option value="managua">Managua</option>
+              <option value="rivas">Rivas</option>
+              <option value="granada">Granada</option>
+            </select>
+
+            <button class="btn-nuevo" id="btnNuevoProducto">+ Nuevo Producto</button>
+          </div>
+        </header>
+
+        <!-- Tabla de inventario -->
+        <div class="table-section">
+          <table id="tabla-inventario">
+            <thead>
+              <tr>
+                <th>Nombre Producto</th>
+                <th>Sucursal</th>
+                <th>Categoría</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+             
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal Nuevo Producto -->
+  <div id="modalProducto" class="modal">
+    <div class="modal-content">
+      <span class="cerrar" id="cerrarModal">&times;</span>
+      <h2>Nuevo Producto</h2>
+      <form id="formNuevoProducto">
+        <label>Nombre</label>
+        <input type="text" id="inputNombre" placeholder="Ingrese nombre del producto">
+
+        <label>Sucursal</label>
+        <select id="inputSucursal">
+          <option value="carazo">Carazo</option>
+          <option value="managua">Managua</option>
+          <option value="rivas">Rivas</option>
+          <option value="granada">Granada</option>
+        </select>
+
+        <label>Categoría</label>
+        <input type="text" id="inputCategoria" placeholder="Categoría">
+
+        <label>Cantidad</label>
+        <input type="number" id="inputCantidad" placeholder="Cantidad">
+
+        <label>Precio</label>
+        <input type="number" id="inputPrecio" placeholder="Precio">
+
+        <label>Estado</label>
+        <select id="inputEstado">
+          <option value="Disponible">Disponible</option>
+          <option value="Agotado">Agotado</option>
+        </select>
+
+        <div class="form-buttons">
+          <button type="submit" class="btn-guardar">Guardar</button>
+          <button type="button" class="btn-cancelar" id="cancelarProducto">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function irA(pagina) {
+      window.location.href = pagina;
+    }
+
+    function cerrarSesion() {
+      alert("Sesión cerrada correctamente");
+      window.location.href = "../login.html";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".sidebar li[data-section]").forEach(item => {
+        item.addEventListener("click", () => {
+          const destino = item.getAttribute("data-section") + ".html";
+          irA(destino);
+        });
+      });
+    });
+  </script>
+
+  <script src="../js/inventario.js"></script>
+   <script src="../js/cerrarSesion.js"></script>
+</body>
+</html>

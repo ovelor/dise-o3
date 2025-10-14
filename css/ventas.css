@@ -1,0 +1,179 @@
+/* Fondos y tipografía */
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #cfcfcf;
+  color: #111;
+}
+
+.main-content {
+  padding: 20px;
+}
+
+/* Top bar */
+.top-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #999;
+}
+/* Fondos y tipografía */
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #cfcfcf;
+  color: #111;
+}
+
+.main-content {
+  padding: 20px;
+}
+
+/* Top bar */
+.top-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #999;
+}/* Tablas uniformes */
+.products-container table,
+.historial-ventas table,
+.cart-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: #fff;      /* Fondo blanco para todas */
+  border-radius: 8px;          /* Bordes redondeados */
+  overflow: hidden;            /* Para que bordes se mantengan */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08); /* Sombra ligera */
+}
+
+.products-container th,
+.products-container td,
+.historial-ventas th,
+.historial-ventas td,
+.cart-container th,
+.cart-container td {
+  padding: 12px 10px;           /* Padding uniforme */
+  text-align: left;
+  border-bottom: 1px solid #c0c0c0; /* Línea entre filas */
+  font-size: 0.95rem;
+  color: #111;
+}
+
+.products-container th,
+.historial-ventas th,
+.cart-container th {
+  background-color: #f0f0f0; /* Fondo de encabezado uniforme */
+  font-weight: 600;
+}
+
+.products-container tr:hover,
+.historial-ventas tr:hover,
+.cart-container tr:hover {
+  background-color: #f5f5f5; /* Hover uniforme */
+}
+/* ====== Carrito estilo factura ====== */
+.cart-container {
+  background-color: #fff;            /* coincide con otras tablas */
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08); /* sombra ligera igual que tablas */
+  margin-bottom: 20px;
+}
+
+.cart-container h2 {
+  margin-bottom: 15px;
+  font-size: 1.6rem;
+  color: #111;
+  border-bottom: 1px solid #c0c0c0; /* línea separadora del título */
+  padding-bottom: 8px;
+}
+
+.invoice-details p {
+  margin: 4px 0;
+  font-size: 0.95rem;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.invoice-table th,
+.invoice-table td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid #c0c0c0; /* línea entre filas */
+  font-size: 0.95rem;
+  color: #111;
+}
+
+.invoice-table th {
+  background-color: #f0f0f0; /* mismo fondo uniforme de encabezado */
+  font-weight: 600;
+}
+
+.invoice-table tr:hover {
+  background-color: #f5f5f5; /* hover igual que otras tablas */
+}
+
+/* Totales */
+.cart-total {
+  margin-top: 12px;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.cart-total p {
+  margin: 4px 0;
+  font-weight: 600;
+}
+
+/* Botones del carrito */
+.cart-buttons {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn-finalizar,
+.btn-vaciar {
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+
+.btn-finalizar {
+  background-color: #111;
+  color: #fff;
+}
+
+.btn-finalizar:hover {
+  background-color: #333;
+}
+
+.btn-vaciar {
+  background-color: #999;
+  color: #fff;
+}
+
+.btn-vaciar:hover {
+  background-color: #777;
+}

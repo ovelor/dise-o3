@@ -1,0 +1,93 @@
+/* ======= Estilo general ======= */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  background-color: #e0e0e0; /* plateado claro */
+  color: #111; /* negro oscuro */
+}
+
+/* ======= Header ======= */
+.header {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0; /* menos espacio */
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px; /* espacio reducido entre logo y título */
+}
+
+.logo-img {
+  height: 250px; /* tamaño del logo más grande pero no excesivo */
+  width: auto;
+}
+
+/* ======= Contenido principal ======= */
+.main-container {
+  text-align: center;
+  padding: 20px 20px; /* menos padding para compactar */
+}
+
+.main-container h1 {
+  color: #111;
+  font-weight: 700;
+  margin-bottom: 15px; /* menos espacio con el logo */
+  font-size: 2.2rem; /* más grande */
+}
+
+.main-container p {
+  color: #111; /* negro más intenso */
+  margin-bottom: 30px; 
+  font-size: 1.1rem; /* ligeramente más grande */
+}
+
+/* ======= Tarjetas ======= */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: #fff;
+  border: 2px solid #c0c0c0; 
+  border-radius: 12px;
+  padding: 25px 15px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+  color: #111;
+}
+
+.card:hover {
+  background-color: #c0c0c0;
+  color: #000;
+  transform: translateY(-3px);
+}
+
+.card h2 {
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.card p {
+  color: #222;
+  font-size: 0.95rem;
+}
+
+/* ======= Footer ======= */
+.footer {
+  background-color: #e0e0e0;
+  color: #111; 
+  text-align: center;
+  padding: 10px 0; /* menos espacio */
+  margin-top: 20px; /* un poco más arriba */
+  font-size: 1rem; /* más grande */
+  font-weight: 700; /* más negro */
+}

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Sucursal Rivas</title>
+  <link rel="stylesheet" href="../css/AdminPanel.css">
+  <link rel="stylesheet" href="../css/sucursales.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>Manugua</h2>
+      <ul>
+        <li class="active" data-section="inicio">🏠 Inicio</li>
+        <li data-section="solicitud">✉️ Enviar Solicitud</li>
+        <li data-section="inventario">📦 Inventario</li>
+        <li data-section="historial">🕒 Historial</li>
+        <li class="logout">🚪 Cerrar sesión</li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+       <!-- 1️⃣ Inicio -->
+      <section id="inicio" class="section active">
+        <header>
+          <h1>Sucursal Managua</h1>
+          <hr>
+        </header>
+        <div class="card">
+          <h2>Resumen de Actividad</h2>
+          <p>Bienvenido a la sucursal Managua. Desde aquí puedes gestionar tus solicitudes, revisar el inventario y consultar tu historial.</p>
+        </div>
+        <div class="cards-grid">
+          <div class="card"><h3>📦 Total Solicitudes</h3><p>120 artículos</p></div>
+          <div class="card"><h3>📤 Solicitudes en Proceso</h3><p>3 solicitudes</p></div>
+          <div class="card"><h3>✅ Solicitudes Completadas</h3><p>15 solicitudes</p></div>
+          <div class="card"><h3>❌ Solicitudes Denegadas</h3><p>0 solicitudes</p></div>
+        </div>
+        <div class="card">
+          <h3>Últimas 3 Solicitudes</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre del usuario</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+           <tbody id="tablaSolicitudes">
+  <!-- Las filas se llenarán dinámicamente desde JS -->
+</tbody>
+
+          </table>
+        </div>
+      </section>
+   <!-- Enviar Solicitud -->
+<section id="solicitud" class="section">
+  <h2>Enviar Solicitud a Casa Matriz</h2>
+
+ <!-- Solicitud de Productos -->
+<div class="solicitud-producto">
+  <h3>Solicitud de Productos</h3>
+  <form id="solicitudProductoForm">
+    <label>Producto:</label>
+    <input type="text" id="producto" placeholder="Ej. Arroz, Frijoles" required>
+
+    <label>Cantidad:</label>
+    <input type="number" id="cantidad" placeholder="Ej. 25" required>
+
+    <label>Nombre de la Sucursal:</label>
+    <input type="text" id="nombreSucursal" placeholder="Ej. Rivas" required>
+
+    <label>Destino de la Solicitud:</label>
+    <select id="destinoSolicitud" required>
+      <option value="">Seleccionar destino</option>
+      <option value="Casa Matriz">Casa Matriz</option>
+      <option value="Sucursal Rivas">Sucursal Rivas</option>
+      <option value="Sucursal [Otra]">Sucursal [Otra]</option>
+    </select>
+
+    <label>Nombre del Usuario:</label>
+    <input type="text" id="nombreUsuario" placeholder="Ej. Juan Pérez" required>
+
+   
+   
+    <div class="form-buttons">
+      <button type="submit" class="btn-submit">📤 Enviar Solicitud</button>
+      <button type="button" class="btn-cancel">Cancelar</button>
+    </div>
+  </form>
+  <p id="mensajeProducto"></p>
+</div>
+<hr>
+
+</section>
+
+    <!-- Inventario -->
+<section id="inventario" class="section">
+  <h2>Inventario de Productos</h2>
+
+  <!-- Buscador y filtro -->
+  <div class="top-bar">
+    <input type="text" id="buscarProducto" placeholder="🔍 Buscar por nombre..." class="search-bar">
+    <select id="filtroCategoria" class="search-bar">
+      <option value="">Todas las categorías</option>
+      <option value="Informática">Informática</option>
+      <option value="Electrodomésticos">Electrodomésticos</option>
+      <option value="Wearables">Wearables</option>
+      <option value="Wearables">Telefonía</option>
+    </select>
+  </div>
+
+  <!-- Botón para abrir modal -->
+  <button class="btn-nuevo" id="btnNuevoProducto">➕ Nuevo Producto</button>
+
+  <!-- Tabla de Inventario -->
+  <table class="table-modern" id="tablaInventario">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Categoría</th>
+        <th>Cantidad</th>
+        <th>Última actualización</th>
+        <th>Precio Unitario</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+  </table>
+
+  <!-- Modal Nuevo Producto -->
+  <div class="modal" id="modalNuevoProducto">
+    <div class="modal-content">
+      <span class="cerrar" id="cerrarModal">&times;</span>
+      <h2>Agregar Nuevo Producto</h2>
+      <form id="formNuevoProducto">
+        <label>Nombre del producto:</label>
+        <input type="text" id="nuevoProductoNombre" required>
+
+        <label>Categoría:</label>
+        <select id="nuevoProductoCategoria" required>
+          <option value="Alimentos">Alimentos</option>
+          <option value="Electrónica">Electrónica</option>
+          <option value="Ropa">Ropa</option>
+        </select>
+
+        <label>Cantidad:</label>
+        <input type="number" id="nuevoProductoCantidad" required>
+
+        <label>Precio unitario:</label>
+        <input type="number" step="0.01" id="nuevoProductoPrecio" required>
+
+        <label>Estado:</label>
+        <select id="nuevoProductoEstado">
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+        </select>
+
+        <div class="form-buttons">
+          <button type="submit" class="btn-guardar">Guardar</button>
+          <button type="button" class="btn-cancelar" id="cancelarNuevoProducto">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Modal Nuevo Producto
+  const modal = document.getElementById("modalNuevoProducto");
+  const btnNuevo = document.getElementById("btnNuevoProducto");
+  const cerrarModal = document.getElementById("cerrarModal");
+  const cancelarModal = document.getElementById("cancelarNuevoProducto");
+
+  btnNuevo.addEventListener("click", () => modal.style.display = "flex");
+  cerrarModal.addEventListener("click", () => modal.style.display = "none");
+  cancelarModal.addEventListener("click", () => modal.style.display = "none");
+  window.addEventListener("click", e => { if(e.target == modal) modal.style.display = "none"; });
+
+  // Agregar nuevo producto a la tabla
+  const formNuevo = document.getElementById("formNuevoProducto");
+  formNuevo.addEventListener("submit", e => {
+    e.preventDefault();
+    const nombre = document.getElementById("nuevoProductoNombre").value;
+    const categoria = document.getElementById("nuevoProductoCategoria").value;
+    const cantidad = parseInt(document.getElementById("nuevoProductoCantidad").value);
+    const precio = parseFloat(document.getElementById("nuevoProductoPrecio").value).toFixed(2);
+    const estado = document.getElementById("nuevoProductoEstado").value;
+    const fecha = new Date().toLocaleDateString();
+
+    const tabla = document.getElementById("tablaInventario").querySelector("tbody");
+    const fila = document.createElement("tr");
+    fila.innerHTML = `<td>${nombre}</td><td>${categoria}</td><td>${cantidad}</td><td>${fecha}</td><td>$${precio}</td><td>${estado}</td>`;
+    tabla.appendChild(fila);
+
+    formNuevo.reset();
+    modal.style.display = "none";
+  });
+
+  // Filtro y búsqueda
+  const inputBuscar = document.getElementById("buscarProducto");
+  const selectCategoria = document.getElementById("filtroCategoria");
+  const tabla = document.getElementById("tablaInventario");
+
+  function filtrarInventario() {
+    const filtroNombre = inputBuscar.value.toLowerCase();
+    const filtroCat = selectCategoria.value;
+
+    Array.from(tabla.tBodies[0].rows).forEach(row => {
+      const nombre = row.cells[0].textContent.toLowerCase();
+      const categoria = row.cells[1].textContent;
+      row.style.display = (nombre.includes(filtroNombre) && (filtroCat === "" || categoria === filtroCat)) ? "" : "none";
+    });
+  }
+
+  inputBuscar.addEventListener("input", filtrarInventario);
+  selectCategoria.addEventListener("change", filtrarInventario);
+</script>
+
+
+     <!-- Historial -->
+<section id="historial" class="section">
+  <h2>Historial de Solicitudes</h2>
+  <table class="table-modern" id="tablaHistorial">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+        <th>Usuario</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+  </table>
+</section>
+
+    </main>
+  </div>
+
+  <script src="../js/jss/sucursalmanagua.js"></script>
+   <script src="../js/jss/solimanagua.js"></script>
+   <script src="../js/jss/inventraiomanaggua.js"></script>
+   <script src="../js/historial.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Admin</title>
+  <link rel="stylesheet" href="../css/AdminPanel.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- PANEL LATERAL -->
+    <aside class="sidebar">
+      <h2>CASA MATRIZ</h2>
+      <ul>
+        <li class="active" data-section="admin"><i>🏠</i> Inicio</li>
+        
+    
+        <li data-section="reportes"><i>📊</i> Reportes</li>
+        <li data-section="inventario"><i>📦</i> Inventario</li>
+        <li data-section="usuarios"><i>👥</i> Usuarios</li>
+        <li class="logout" onclick="cerrarSesion()"><i>🚪</i> Cerrar sesión</li>
+
+      </ul>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+      <header>
+        <h1>Resumen de Actividad</h1>
+      </header>
+
+      <!-- TARJETAS EN FILA -->
+      <section class="card-container">
+        <div class="card">
+          <h2>Solicitudes Totales</h2>
+          <p id="total-solicitudes"></p>
+        </div>
+        <div class="card">
+          <h2>Inventario Total</h2>
+          <p id="total-inventario"></p>
+        </div>
+        <div class="card">
+          <h2>Usuarios Totales</h2>
+          <p id="total-usuarios"></p>
+        </div>
+      </section>
+
+      <!-- TABLAS ORDENADAS UNA DEBAJO DE OTRA -->
+      <section class="table-section">
+        <h2>Solicitudes Recientes</h2>
+        <table>
+          <thead>
+            <tr>
+             
+              <th>Estado</th>
+              <th>Fecha de Creación</th>
+              <th>Usuario</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-solicitudes-recientes"></tbody>
+        </table>
+      </section>
+
+      <section class="table-section">
+        <h2>Inventario</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre de Producto</th>
+              <th>Cantidad</th>
+              <th>Precio</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-inventario"></tbody>
+        </table>
+      </section>
+
+      <section class="table-section">
+        <h2>Usuarios</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Rol</th>
+              <th>Correo Electrónico</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-usuarios"></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function irA(pagina) {
+      window.location.href = pagina;
+    }
+
+    function cerrarSesion() {
+      alert("Sesión cerrada correctamente");
+      window.location.href = "../login.html";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".sidebar li[data-section]").forEach(item => {
+        item.addEventListener("click", () => {
+          const destino = item.getAttribute("data-section") + ".html";
+          irA(destino);
+        });
+      });
+    });
+  </script>
+
+  <script src="../js/AdminPanel.js"></script>
+</body>
+</html>

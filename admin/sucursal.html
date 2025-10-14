@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detalles de Sucursal</title>
+  <link rel="stylesheet" href="../css/AdminPanel.css" />
+  <link rel="stylesheet" href="../css/sucursal.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- PANEL LATERAL -->
+    <aside class="sidebar">
+      <h2>CASA MATRIZ</h2>
+      <ul>
+        <li data-section="admin"><i>🏠</i> Inicio</li>
+        
+        <li class="active" data-section="sucursal"><i>🏢</i> Sucursales</li>
+        <li data-section="reportes"><i>📊</i> Reportes</li>
+        <li data-section="inventario"><i>📦</i> Inventario</li>
+        <li data-section="usuarios"><i>👥</i> Usuarios</li>
+    
+        <li class="logout" onclick="cerrarSesion()"><i>🚪</i> Cerrar sesión</li>
+
+      </ul>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+      <section id="detalle-sucursal" class="content-section active">
+        <header>
+          <h1>Detalles de Sucursal</h1>
+          <div class="filter-bar">
+            <label for="selectSucursal">Filtrar Sucursal:</label>
+            <select id="selectSucursal">
+              <option value="todas">Todas</option>
+              <option value="carazo">Carazo</option>
+              <option value="managua">Managua</option>
+              <option value="rivas">Rivas</option>
+              <option value="granada">Granada</option>
+            </select>
+          </div>
+        </header>
+
+        <!-- Tarjetas resumen -->
+        <div class="card-container">
+          <div class="card">
+            <h3>Solicitudes Totales</h3>
+            <p id="total-solicitudes">120</p>
+          </div>
+          <div class="card">
+            <h3>Inventario Total</h3>
+            <p id="total-inventario">350</p>
+          </div>
+          <div class="card">
+            <h3>Usuarios Totales</h3>
+            <p id="total-usuarios">25</p>
+          </div>
+        </div>
+
+        <!-- Tabla de sucursales -->
+        <div class="table-section">
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre Sucursal</th>
+                <th>Solicitudes</th>
+                <th>Productos Vendidos</th>
+                <th>Precio</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-sucursales">
+             
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+    </main>
+  </div>
+  <script>
+    function irA(pagina) {
+      window.location.href = pagina;
+    }
+
+    function cerrarSesion() {
+      alert("Sesión cerrada correctamente");
+      window.location.href = "../login.html";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".sidebar li[data-section]").forEach(item => {
+        item.addEventListener("click", () => {
+          const destino = item.getAttribute("data-section") + ".html";
+          irA(destino);
+        });
+      });
+    });
+  </script>
+
+  <script src="../js/Sucursales.js"></script>
+   <script src="../js/cerrarSesion.js"></script>
+</body>
+</html>

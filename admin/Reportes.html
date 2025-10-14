@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reportes de Solicitudes</title>
+  <link rel="stylesheet" href="../css/sucursal.css">
+  <link rel="stylesheet" href="../css/AdminPanel.css" />
+  <link rel="stylesheet" href="../css/Reportes.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- PANEL LATERAL -->
+    <aside class="sidebar">
+      <h2>CASA MATRIZ</h2>
+      <ul>
+        <li data-section="admin"><i>🏠</i> Inicio</li>
+        
+    
+        <li class="active" data-section="reportes"><i>📊</i> Reportes</li>
+        <li data-section="inventario"><i>📦</i> Inventario</li>
+        <li data-section="usuarios"><i>👥</i> Usuarios</li>
+        <li class="logout" onclick="cerrarSesion()"><i>🚪</i> Cerrar sesión</li>
+
+      </ul>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+      <section id="reportes" class="content-section active">
+        <header>
+          <h1>Reportes de Solicitudes</h1>
+        </header>
+
+       <div class="filtros-solicitudes">
+  <label>Sucursal:
+    <select id="filtroSucursal">
+      <option value="todas">Todas</option>
+      <option value="carazo">Carazo</option>
+      <option value="managua">Managua</option>
+      <option value="rivas">Rivas</option>
+      <option value="granada">Granada</option>
+    </select>
+  </label>
+
+  <label>Estado:
+    <select id="filtroEstado">
+      <option value="todas">Todos</option>
+      <option value="pendiente">Pendiente</option>
+      <option value="aprobada">Aceptada</option>
+      <option value="denegada">Denegada</option>
+    </select>
+  </label>
+</div>
+
+        <!-- Tabla de solicitudes -->
+        <div class="table-section">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Sucursal</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Usuario</th>
+                <th>Fecha de Solicitud</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tablaSolicitudes">
+              <!-- Aquí se insertarán los datos dinámicos -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script>
+    function irA(pagina) {
+      window.location.href = pagina;
+    }
+
+    function cerrarSesion() {
+      alert("Sesión cerrada correctamente");
+      window.location.href = "../login.html";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".sidebar li[data-section]").forEach(item => {
+        item.addEventListener("click", () => {
+          const destino = item.getAttribute("data-section") + ".html";
+          irA(destino);
+        });
+      });
+    });
+  </script>
+
+  <script src="../js/Reportes.js"></script>
+   <script src="../js/cerrarSesion.js"></script>
+</body>
+</html>

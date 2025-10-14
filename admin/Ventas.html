@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ventas en Tiempo Real - Casa Matriz</title>
+  <link rel="stylesheet" href="../css/AdminPanel.css" />
+  <link rel="stylesheet" href="../css/ventas.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- PANEL LATERAL -->
+    <aside class="sidebar">
+      <h2>CASA MATRIZ</h2>
+      <ul>
+        <li data-section="admin"><i>🏠</i> Inicio</li>
+        <li class="active" data-section="ventas"><i>💰</i> Ventas</li>
+      
+        <li data-section="reportes"><i>📊</i> Reportes</li>
+        <li data-section="inventario"><i>📦</i> Inventario</li>
+        <li data-section="usuarios"><i>👥</i> Usuarios</li>
+       
+        <li class="logout"><i>🚪</i> Cerrar sesión</li>
+      </ul>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+      <section id="ventas" class="content-section active">
+        <header>
+          <h1>Ventas en Tiempo Real</h1>
+          
+        </header>
+
+        <!-- Listado de productos -->
+        <div class="products-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Producto A</td>
+                <td>Electrónica</td>
+                <td>$50</td>
+                <td>10</td>
+                <td><button class="btn-agregar">+</button></td>
+              </tr>
+              <tr>
+                <td>Producto B</td>
+                <td>Alimentos</td>
+                <td>$30</td>
+                <td>5</td>
+                <td><button class="btn-agregar">+</button></td>
+              </tr>
+              <tr>
+                <td>Producto C</td>
+                <td>Ropa</td>
+                <td>$25</td>
+                <td>20</td>
+                <td><button class="btn-agregar">+</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+ <!-- Carrito de Compras estilo factura -->
+<div class="cart-container">
+  <h2>Carrito de Compras</h2>
+
+  <!-- Detalles de la factura -->
+  <div class="invoice-details">
+    <p>
+      <strong>Cliente: </strong>
+      <input type="text" id="cliente-nombre" placeholder="Nombre del cliente" />
+    </p>
+    <p>
+      <strong>Método de pago: </strong>
+      <select id="metodo-pago">
+        <option value="efectivo">Efectivo</option>
+        <option value="tarjeta">Tarjeta</option>
+        <option value="transferencia">Transferencia</option>
+      </select>
+    </p>
+    <p>
+      <strong>Fecha: </strong>
+      <span id="fecha-factura"></span>
+    </p>
+  </div>
+
+  <!-- Tabla de productos -->
+  <table class="invoice-table">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Precio Unitario</th>
+        <th>Cantidad</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody id="carrito-body">
+      <!-- Filas agregadas dinámicamente -->
+    </tbody>
+  </table>
+
+  <!-- Totales -->
+  <div class="cart-total">
+    <p><strong>Total: </strong><span id="total">$0</span></p>
+  </div>
+
+  <!-- Botones -->
+  <div class="cart-buttons">
+    <button class="btn-finalizar">Finalizar Venta</button>
+    <button class="btn-vaciar">Vaciar Carrito</button>
+  </div>
+</div>
+
+<!-- Script para fecha automática -->
+<script>
+  const fechaSpan = document.getElementById("fecha-factura");
+  const hoy = new Date();
+  const dia = String(hoy.getDate()).padStart(2, '0');
+  const mes = String(hoy.getMonth() + 1).padStart(2, '0'); // Mes empieza en 0
+  const anio = hoy.getFullYear();
+  fechaSpan.textContent = `${dia}/${mes}/${anio}`;
+</script>
+
+        <!-- Historial de ventas -->
+        <div class="table-section historial-ventas">
+          <h2>Historial de Ventas</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>ID Venta</th>
+                <th>Productos</th>
+                <th>Total</th>
+                <th>Cliente</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Producto A, Producto B</td>
+                <td>$80</td>
+                <td>Juan Pérez</td>
+                <td>08/10/2025</td>
+                <td>Completada</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Producto C</td>
+                <td>$25</td>
+                <td>Laura Gómez</td>
+                <td>08/10/2025</td>
+                <td>Pendiente</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script>
+    function irA(pagina) {
+      window.location.href = pagina;
+    }
+
+    function cerrarSesion() {
+      alert("Sesión cerrada correctamente");
+      window.location.href = "../login.html";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".sidebar li[data-section]").forEach(item => {
+        item.addEventListener("click", () => {
+          const destino = item.getAttribute("data-section") + ".html";
+          irA(destino);
+        });
+      });
+    });
+  </script>
+  <!-- JS externo para futura funcionalidad -->
+  <script src="../js/ventas.js"></script>
+</body>
+</html>

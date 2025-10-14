@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro de Usuarios</title>
+  <link rel="stylesheet" href="../css/usuarios.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- PANEL LATERAL -->
+    <aside class="sidebar">
+      <h2>CASA MATRIZ</h2>
+      <ul>
+        <li data-section="admin"><i>🏠</i> Inicio</li>
+         
+       
+        <li data-section="reportes"><i>📊</i> Reportes</li>
+        <li data-section="inventario"><i>📦</i> Inventario</li>
+        <li class="active" data-section="usuarios"><i>👥</i> Usuarios</li>
+         <li class="logout" onclick="cerrarSesion()"><i>🚪</i> Cerrar sesión</li>
+      </ul>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+      <section id="registro-usuarios" class="content-section active">
+        <header>
+          <h1>Registro de Usuario</h1>
+          <div class="top-bar">
+            <input type="text" placeholder="🔍 Buscar usuario..." class="search-bar" />
+            <button class="btn-nuevo" id="btnNuevoUsuario">+ Nuevo Usuario</button>
+          </div>
+        </header>
+
+        <!-- Tabla de usuarios -->
+        <div class="table-section">
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Correo Electrónico</th>
+                <th>Rol</th>
+                <th>Sucursal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Aquí se llenarán los usuarios dinámicamente -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal para nuevo usuario -->
+  <div id="modalUsuario" class="modal">
+    <div class="modal-content">
+      <span class="cerrar" id="cerrarModal">&times;</span>
+      <h2>Nuevo Usuario</h2>
+      <form>
+        <label>Nombre</label>
+        <input type="text" placeholder="Ingrese nombre completo" />
+
+        <label>Correo Electrónico</label>
+        <input type="email" placeholder="Ingrese correo" />
+
+        <label>Contraseña</label>
+        <input type="password" placeholder="Ingrese contraseña" />
+
+        <label>Seleccionar Rol</label>
+        <select>
+          <option>admin</option>
+          <option>Usuario</option>
+        </select>
+
+        <label>Seleccionar Sucursal</label>
+        <select id="selectSucursal">
+          <option value="managua">Managua</option>
+          <option value="carazo">Carazo</option>
+          <option value="granada">Granada</option>
+          <option value="rivas">Rivas</option>
+        </select>
+
+        <div class="form-buttons">
+          <button type="submit" class="btn-guardar">Guardar</button>
+          <button type="button" class="btn-cancelar" id="cancelarUsuario">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function irA(pagina) {
+      window.location.href = pagina;
+    }
+
+    function cerrarSesion() {
+      alert("Sesión cerrada correctamente");
+      window.location.href = "../login.html";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".sidebar li[data-section]").forEach(item => {
+        item.addEventListener("click", () => {
+          const destino = item.getAttribute("data-section") + ".html";
+          irA(destino);
+        });
+      });
+    });
+  </script>
+
+  <script src="../js/Usuarios.js"></script>
+   <script src="../js/cerrarSesion.js"></script>
+</body>
+</html>
