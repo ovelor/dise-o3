@@ -24,9 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // ----- Función para renderizar solicitudes -----
   function renderizarSolicitudes(solicitudes) {
     const total = solicitudes.length;
-    const pendientes = solicitudes.filter(s => s.estado === "Pendiente").length;
-    const aprobadas = solicitudes.filter(s => s.estado === "aprobada").length;
-    const denegadas = solicitudes.filter(s => s.estado === "Denegada").length;
+    const pendientes = solicitudes.filter(s => s.estado.toLowerCase() === "pendiente").length;
+const aprobadas = solicitudes.filter(s => s.estado.toLowerCase() === "aprobada").length;
+const denegadas = solicitudes.filter(s => s.estado.toLowerCase() === "denegada").length;
 
     // Actualizar tarjetas
     if (cards.length >= 4) {
