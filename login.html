@@ -1,33 +1,59 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bienvenido - Sistema de Sucursales</title>
-  <link rel="stylesheet" href="css/login.css">
-</head>
-<body class="login-body">
+<script type="module">
+import { guardarLocal, obtenerLocal } from './js/db.js';
+import { sincronizarTodos } from './js/sync.js';
 
-  <div class="login-container">
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
 
-    <!-- Logo grande en lugar del título -->
-    <div class="login-logo">
-      <img src="css/56.png" alt="Logo" class="logo-img-login">
-    </div>
+  const email = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value.trim();
 
-    <p>Inicia sesión para continuar</p>
-    
-    <form id="loginForm">
-      <input type="text" id="username" placeholder="Usuario" required>
-      <input type="password" id="password" placeholder="Contraseña" required>
-      <button type="submit">Iniciar Sesión</button>
-    </form>
+  try {
+    const res = await fetch('https://backend-12-4.onrender.com/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    });
 
-    <p class="info">© 2025 Sistema de Gestión de Sucursales</p>
-  </div>
+    const data = await res.json();
 
-<script src="js/login.js"></script>
+    if (!res.ok) {
+      alert(data.error || 'Error al iniciar sesión');
+      return;
+    }
 
+    // Guardar token seguro
+    if (data.token) sessionStorage.setItem('token', data.token);
 
-</body>
-</html>
+    // Guardar info usuario en IndexedDB
+    await guardarLocal('usuario', {
+      email,
+      rol: data.rol || 'user',
+      sucursalId: data.sucursalId || 'desconocida',
+      loginTime: Date.now(),
+    });
+
+    if (navigator.onLine) sincronizarTodos();
+
+    // Redirigir según rol
+    if (data.rol === 'admin' || data.sucursalId.toLowerCase().includes('casa matriz')) {
+      window.location.href = 'admin/admin.html';
+    } else {
+      const sucursalHTML = data.sucursalId.trim().toLowerCase().replace(/\s+/g, '-');
+      window.location.href = `sucursales/${sucursalHTML}.html`;
+    }
+
+  } catch (error) {
+    console.error('Error backend:', error);
+
+    const usuarioOffline = await obtenerLocal('usuario');
+    if (usuarioOffline.length) {
+      alert('Servidor inaccesible. Trabajando en modo offline.');
+      const sucursalHTML = usuarioOffline[0].sucursalId.trim().toLowerCase().replace(/\s+/g, '-');
+      window.location.href = `sucursales/${sucursalHTML}.html`;
+    } else {
+      alert('No se pudo conectar con el servidor y no hay datos locales.');
+    }
+  }
+});
+</script>
