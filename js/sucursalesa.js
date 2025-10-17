@@ -22,37 +22,46 @@ document.addEventListener("DOMContentLoaded", () => {
   const STORAGE_KEY = "solicitudes_" + SUCURSAL;
 
   // ----- Función para renderizar solicitudes -----
-  function renderizarSolicitudes(solicitudes) {
-    const total = solicitudes.length;
-    const pendientes = solicitudes.filter(s => s.estado.toLowerCase() === "pendiente").length;
-const aprobadas = solicitudes.filter(s => s.estado.toLowerCase() === "aprobada").length;
-const denegadas = solicitudes.filter(s => s.estado.toLowerCase() === "denegada").length;
+ function renderizarSolicitudes(solicitudes) {
+  const total = solicitudes.length;
+  const pendientes = solicitudes.filter(s => s.estado?.toLowerCase() === "pendiente").length;
+  const aprobadas = solicitudes.filter(s => s.estado?.toLowerCase() === "aprobada").length;
+  const denegadas = solicitudes.filter(s => s.estado?.toLowerCase() === "denegada").length;
 
-    // Actualizar tarjetas
-    if (cards.length >= 4) {
-      cards[0].textContent = `${total} artículos`;
-      cards[1].textContent = `${pendientes} solicitudes`;
-      cards[2].textContent = `${aprobadas} solicitudes`;
-      cards[3].textContent = `${denegadas} solicitudes`;
-    }
+  const textos = [
+    `${total} artículos`,
+    `${pendientes} solicitudes`,
+    `${aprobadas} solicitudes`,
+    `${denegadas} solicitudes`
+  ];
 
-    // Actualizar tabla
-    if (tablaSolicitudes) {
-      tablaSolicitudes.innerHTML = "";
-      solicitudes
-        .sort((a, b) => new Date(b.fecha) - new Date(a.fecha))
-        .slice(0, 5)
-        .forEach(s => {
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-            <td>${s.nombreUsuario || "-"}</td>
-            <td>${new Date(s.fecha).toLocaleDateString("es-ES")}</td>
-            <td>${s.estado}</td>
-          `;
-          tablaSolicitudes.appendChild(tr);
-        });
-    }
+  // Validar si hay 4 tarjetas
+  if (cards && cards.length >= 4) {
+    cards.forEach((p, index) => {
+      if (textos[index] !== undefined) p.textContent = textos[index];
+    });
+  } else {
+    console.warn("⚠️ No se encontraron las 4 tarjetas esperadas o el DOM no está cargado completamente.");
   }
+
+  // Actualizar tabla
+  if (tablaSolicitudes) {
+    tablaSolicitudes.innerHTML = "";
+    solicitudes
+      .sort((a, b) => new Date(b.fecha) - new Date(a.fecha))
+      .slice(0, 5)
+      .forEach(s => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${s.nombreUsuario || "-"}</td>
+          <td>${new Date(s.fecha).toLocaleDateString("es-ES")}</td>
+          <td>${s.estado}</td>
+        `;
+        tablaSolicitudes.appendChild(tr);
+      });
+  }
+}
+
 
   // ----- Cargar solicitudes desde backend -----
   async function cargarSolicitudes(forceUpdate = false) {
