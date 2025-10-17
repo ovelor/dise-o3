@@ -13,48 +13,56 @@
   </div>
 </header>
 
-  <main class="main-container">
-    <h1>🏢 Sistema de Gestión de Sucursales</h1>
-    <p>Seleccione una sucursal o la casa matriz para continuar</p>
+<main class="main-container">
+  <h1>🏢 Sistema de Gestión de Sucursales</h1>
+  <p>Seleccione una sucursal o la casa matriz para continuar</p>
 
-    <div class="card-container">
-      <div class="card" onclick="irSucursal('matriz')">
-        <h2>🏠 Casa Matriz</h2>
-        <p>Oficinas centrales</p>
-      </div>
-      <div class="card" onclick="irSucursal('managua')">
-        <h2>📍 Sucursal Managua</h2>
-        <p>Zona metropolitana</p>
-      </div>
-      <div class="card" onclick="irSucursal('carazo')">
-        <h2>📍 Sucursal Carazo</h2>
-        <p>Departamento de Carazo</p>
-      </div>
-      <div class="card" onclick="irSucursal('granada')">
-        <h2>📍 Sucursal Granada</h2>
-        <p>Departamento de Granada</p>
-      </div>
-      <div class="card" onclick="irSucursal('rivas')">
-        <h2>📍 Sucursal Rivas</h2>
-        <p>Departamento de Rivas</p>
-      </div>
+  <div class="card-container">
+    <div class="card" onclick="irSucursal('matriz')">
+      <h2>🏠 Casa Matriz</h2>
+      <p>Oficinas centrales</p>
     </div>
-  </main>
+    <div class="card" onclick="irSucursal('managua')">
+      <h2>📍 Sucursal Managua</h2>
+      <p>Zona metropolitana</p>
+    </div>
+    <div class="card" onclick="irSucursal('carazo')">
+      <h2>📍 Sucursal Carazo</h2>
+      <p>Departamento de Carazo</p>
+    </div>
+    <div class="card" onclick="irSucursal('granada')">
+      <h2>📍 Sucursal Granada</h2>
+      <p>Departamento de Granada</p>
+    </div>
+    <div class="card" onclick="irSucursal('rivas')">
+      <h2>📍 Sucursal Rivas</h2>
+      <p>Departamento de Rivas</p>
+    </div>
+  </div>
+</main>
 
-  <footer class="footer">
-    <p>© 2025 Sistema de Sucursales</p>
-  </footer>
+<footer class="footer">
+  <p>© 2025 Sistema de Sucursales</p>
+</footer>
 
- <script>
-  function irSucursal(nombre) {
-    // Guardar el nombre de la sucursal para usarlo después si quieres
-    localStorage.setItem("sucursalSeleccionada", nombre);
+<script>
+function irSucursal(nombre) {
+  // Guardar el nombre de la sucursal para usarlo después si quieres
+  localStorage.setItem("sucursalSeleccionada", nombre);
 
-    // Ir directamente a la página de login
-    window.location.href = "/login";
-  }
+  // Ir directamente a la página de login
+  window.location.href = "/login";
+}
 </script>
 
+<!-- Aquí agregamos el script de módulo SIN borrar nada -->
+<script type="module">
+  import { startSync } from './js/sync.js';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    startSync();
+  });
+</script>
 
 </body>
 </html>
