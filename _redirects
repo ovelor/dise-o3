@@ -1,0 +1,18 @@
+# Páginas principales
+/login        /login.html        200
+/index        /index.html        200
+
+# Carpeta admin
+/adm/admin        /adm/admin.html        200
+/adm/inventario   /adm/inventario.html   200
+/adm/reportes     /adm/reportes.html     200
+/adm/usuarios     /adm/usuarios.html     200
+
+# Carpeta sucursales
+/sucursales/carazo     /sucursales/carazo.html     200
+/sucursales/managua    /sucursales/managua.html    200
+/sucursales/granada    /sucursales/granada.html    200
+/sucursales/rivas      /sucursales/rivas.html      200
+
+# Ruta por defecto
+/*            /index.html        200
