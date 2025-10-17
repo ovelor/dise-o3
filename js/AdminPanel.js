@@ -47,10 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
       .forEach(s => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
-        
-          <td>${s.estado || "-"}</td>
-          <td>${s.fecha ? new Date(s.fecha).toLocaleDateString("es-ES") : "-"}</td>
+          <td>${s.producto || "-"}</td>
           <td>${s.nombreUsuario || "-"}</td>
+          <td>${s.fecha ? new Date(s.fecha).toLocaleDateString("es-ES") : "-"}</td>
+          <td>${s.estado || "-"}</td>
+           
         `;
         tablaSolicitudes.appendChild(tr);
       });
